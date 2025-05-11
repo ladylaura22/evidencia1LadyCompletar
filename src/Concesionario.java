@@ -12,10 +12,10 @@ public class  Concesionario {
 
     // Método para realizar una venta de un vehículo
     public void realizarVenta(String codigoVehiculo, double monto, String apellido, String nombre, String documento) {
-        Vehiculo vehiculoVendido = *****;
+        Vehiculo vehiculoVendido = null; // Este null se usa para inicializar la busqueda con la variable.
         // Buscar el vehículo en el inventario
         for (Vehiculo v : inventario) {
-            if (v.getCodigo().equals(codigo*******)) {
+            if (v.getCodigo().equals(codigoVehiculo)) { //SE COMPARA CODIGO INGRESADO CON LOS DEL INVENTARIO
                 vehiculoVendido = v;
                 break;
             }
@@ -23,7 +23,7 @@ public class  Concesionario {
         // Si se encuentra el vehículo, se registra la venta
         if (vehiculoVendido != null) {
             ventas.add(new Venta(monto, vehiculoVendido, apellido, nombre, documento));
-            *******.remove(vehiculoVendido);
+            inventario.remove(vehiculoVendido); //SE COLOCA INVENTARIO PARA ELIMINAR EL VEHICULO
             System.out.println("Venta realizada: " + nombre + " " + apellido + " ha comprado " + vehiculoVendido.getMarca());
         } else {
             System.out.println("Error: Vehículo con código " + codigoVehiculo + " no encontrado.");
